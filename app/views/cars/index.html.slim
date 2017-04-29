@@ -1,0 +1,30 @@
+p Cars:
+ul#cars_list
+  - if @cars.any?
+    table class="table table-striped"
+      thead
+        tr
+          th #
+          th Name
+          th Type of body
+          th Color
+          th Fuel
+          th Volume
+      - @cars.each do |car|
+        tr
+          td.name = car.id
+          td.name = car.name
+          td.body_type = car.body
+          td.color = car.color
+          -if car.fuel == true
+            td.fuel Patrol
+          -else
+            td.fuel Disel
+          td.volume = car.volume
+          td.delete 
+            = link_to 'Delete', [car], class: 'delete-car-link btn btn-default ', method: :delete, remote: true, data: {confirm: "Are you sure?"}
+            = link_to 'Edit', edit_car_path(car), class: 'edit-car-link btn btn-default'
+
+  - else
+    p Cars not created
+p = link_to 'Create car', new_car_path
