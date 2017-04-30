@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :cars
 
+  acts_as_booker
+
   def check_author(item)  
     item.user_id == id
   end
