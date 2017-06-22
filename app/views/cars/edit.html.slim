@@ -1,0 +1,27 @@
+= render 'common/errors', resource: @car
+.row
+.col-lg-6.col-md-8.col-sm-12
+  = form_for @car do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      p Type of body:
+      = f.select(:body, options_for_select([['Sedan', 'Sedan'], ['Coupe', 'Coupe'],['Universal', 'Universal'], ['Hatchback', 'Hatchback']]))
+    .form-group
+      = f.label :color
+      = f.text_field :color, class: 'form-control'
+    .form-group
+      p Fuel:
+      = f.radio_button(:fuel, "true")
+      = f.label(:fuel, "Petrol")
+      = f.radio_button(:fuel, "false")
+      = f.label(:fuel, "Disel")
+    .form-group
+      = f.label :volume
+      = f.text_field :volume, class: 'form-control'
+    div
+      = f.submit 'Update', class: 'btn btn-primary'
+      = button_tag 'Cancel', type: 'button', class: 'btn btn-default cancel'
+                
+  = link_to 'Back', cars_path, type: 'button', class: 'btn btn-default cancel'
